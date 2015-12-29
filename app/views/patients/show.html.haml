@@ -1,0 +1,43 @@
+%html
+  
+  %h3 Patient Information
+  
+  %body
+  .container
+  = @patient.first_name 
+  = @patient.last_name 
+  = @patient.d_o_b 
+  = @patient.description 
+  = @patient.gender
+  = @patient.blood_type
+  .workflow{class: ".workflow"}
+    = render 'workflow', patient: @patient
+  %br/  
+  
+  = link_to "Back", facility_patients_path(@facility) 
+  = link_to "Edit", edit_facility_patient_path(@facility,@patient)
+  = link_to "Delete Record", facility_patient_path(@facility,@patient), method: :delete
+
+  %ul
+    -@meds.each do |med| 
+      %li
+      = med.name 
+      = med.dose 
+      = med.description  
+
+- @patient.doctors.each do |doctor|
+  %li
+    = doctor.name
+    = doctor.specialty
+= form_for @doctor, url: create_doctor_facility_patient_path(@facility,@patient) do |f|
+  = f.label :name
+  = f.text_field :name
+  %br/
+  = f.label :specialty
+  = f.text_field :specialty
+  %br/
+  = f.submit
+
+
+
+

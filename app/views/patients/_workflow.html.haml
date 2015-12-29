@@ -1,0 +1,15 @@
+= patient.workflow_state
+- facility = @patient.facility
+
+-if patient.deactivated?
+  = link_to "Patient Waiting", 'javascript:void(0);', class: "update-wait", patient_id: @patient
+
+-if patient.waiting?
+  = link_to "Check Up", 'javascript:void(0):', class: "update-check"
+  = link_to "X-ray", 'javascript:void(0):', class: "update-xray", facility_id: @facility
+  = link_to "Surgery", 'javascript:void(0):', class: "update-surgery", facility_id: @facility
+  = link_to "Leave", 'javascript:void(0):', class: "update-leave", facility_id: @facility
+
+
+
+ 

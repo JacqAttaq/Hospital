@@ -1,0 +1,33 @@
+%h3 Patient Records
+
+
+=link_to "Facility Home", facility_path(@facility)
+=link_to 'New Patient', new_facility_patient_path
+
+
+%body
+= form_tag facility_patients_path, method: :get, class: "navbar-form", role: "search" do
+  .input-group
+    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search"
+    .input-group-btn
+      %button.btn.btn-default
+        %i.glyphicon.glyphicon-search
+
+
+.container
+ 
+  %ul
+    -@patients.each do |patient| 
+      %li
+      = patient.last_name
+      = patient.first_name 
+      = link_to "Edit", edit_facility_patient_path(@facility, patient)  
+      = link_to "Delete", facility_patient_path(@facility, patient), method: :delete 
+      = link_to "View", facility_patient_path(@facility, patient)  
+
+
+= will_paginate @facilities 
+
+
+
+  

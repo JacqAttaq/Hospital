@@ -1,0 +1,47 @@
+%h1 Regional Hospital Diretory
+
+= form_tag facilities_path, method: :get, class: "navbar-form", role: "search" do
+  .input-group
+    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search"
+    .input-group-btn
+      %button.btn.btn-default
+        %i.glyphicon.glyphicon-search
+= link_to "Create New Facility", new_facility_path 
+
+
+.container
+  .row
+    %ul
+      -@facilities.each do |facility| 
+        %li
+        = facility.name 
+        = link_to "Edit", edit_facility_path(facility)  
+        = link_to "Delete", facility_path(facility), method: :delete 
+        = link_to "View", facility_path(facility)  
+
+
+= will_paginate @facilities 
+/   .row
+/   - x = 0
+/   - y = 1
+/   %ul{class: "property_list"}
+/     - @facilities.each_slice(10) do |row|
+/       %li{class: "section_#{x+1}"}
+/       - x = x+1
+/       - row.each do |facility|
+/         .col-md-3
+/           .list-group-item  
+/             = facility.name 
+/             = link_to "Edit", edit_facility_path(facility)
+/             = link_to "Delete", facility_path(facility), method: :delete 
+/             = link_to "View", facility_path(facility)  
+/ .col-md-12.text-center
+/   %ul{class: "link_list"}
+/     - x.times do
+/       %li{class: "link_#{y}"}
+/         %a{class: "link_#{y}", med_num: y}
+/           ="page #{y}"
+/       - y += 1
+
+
+

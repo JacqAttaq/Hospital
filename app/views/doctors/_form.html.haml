@@ -1,0 +1,11 @@
+%h2 Enter Doctor Information
+
+= form_for @doctor, url: create_doctor_facility_path(@facility) do |f|
+  .form-group
+  = f.label :name
+  = f.text_field :name class: "form-control validate-test"
+  %br/
+  = f.label :specialty
+  = f.text_field :specialty
+  %br/
+  = f.submit "Submit", class: "btn btn-primary disabled submit-info"

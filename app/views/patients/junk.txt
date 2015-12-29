@@ -1,0 +1,31 @@
+
+  /   -if patient.waiting?
+  / = link_to "Check Up", 'javascript:void(0):', class: "update-check", facility_id: @facility, patient_id: @patient.id / - if patient.waiting?
+  / = link_to "Check", 'javascript:void(0):', class: "update-check", facility_id: @facility
+  / = link_to "X-ray", 'javascript:void(0):', class: "update-xray", facility_id: @facility
+  / = link_to "Surgery", 'javascript:void(0):', class: "update-surgery", facility_id: @facility
+  / = link_to "Leave", 'javascript:void(0):', class: "update-leave", facility_id: @facility
+
+/   -if patient.checked?
+/     = link_to "X-ray", xray_patient_facility_patient_path(@facility,patient), method: :patch
+/     = link_to "Surgery", surgery_patient_facility_patient_path(@facility,patient), method: :patch
+/     = link_to "Patient pay", pay_patient_facility_patient_path(@facility,patient), method: :patch
+
+/   -if patient.xrayed?
+/     = link_to "Check", check_patient_facility_patient_path(@facility,patient), method: :patch
+/     = link_to "Surgery", surgery_patient_facility_patient_path(@facility,patient), method: :patch
+/     = link_to "Patient pay", pay_patient_facility_patient_path(@facility,patient), method: :patch
+
+/   -if patient.surgeryed?
+/     = link_to "Check", check_patient_facility_patient_path(@facility,patient), method: :patch
+/     = link_to "X-ray", xray_patient_facility_patient_path(@facility,patient), method: :patch
+/     = link_to "Patient pay", pay_patient_facility_patient_path(@facility,patient), method: :patch
+
+
+/   -if patient.paying?
+/     = link_to "Check Out Complete", leave_patient_facility_patient_path(@facility,patient), method: :patch
+
+/   -if patient.leaving?
+/     = link_to "Outside Facility", deactivated_patient_facility_patient_path(@facility,patient), method: :patch
+
+  

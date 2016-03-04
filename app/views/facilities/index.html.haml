@@ -11,8 +11,8 @@
 
 .container
   .row
-    %ul
-      -@facilities.each do |facility| 
+    %ul.list-unstyled 
+      -@facilities.each do |facility|   
         %li
         = facility.name 
         = link_to "Edit", edit_facility_path(facility)  

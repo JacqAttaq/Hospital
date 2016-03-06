@@ -15,7 +15,7 @@
   .row
   - x = 0
   - y = 1
-  %ul{class: "property_list"}
+  %ul.list-unstyled{class: "property_list"}
     - @meds.each_slice(10) do |row|
       %li{class: "section_#{x+1}"}
       - x = x+1

@@ -1,5 +1,4 @@
 %h4 Hospital Information
-.list-unstyled
 = @facility.name
 %br
 = @facility.address
@@ -11,7 +10,7 @@
 
 %p
 %h5 Physicians/Specialties
-%ul
+%ul.list-unstyled
   -@facility.doctors.each do |doctor|
     %li
       = "Dr."    
